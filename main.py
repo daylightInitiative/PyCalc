@@ -4,10 +4,10 @@ root = tk.Tk()
 root.title("Calculator")
 root.geometry("320x480")
 
-expression_label = tk.Label(root, text="", anchor="e", font=("Arial", 12))
+expression_label = tk.Label(root, text="", anchor="e", font=("Arial", 20))
 expression_label.pack(fill="both")
 
-result_label = tk.Label(root, text="", anchor="e", font=("Arial", 16))
+result_label = tk.Label(root, text="", anchor="e", font=("Arial", 30))
 result_label.pack(fill="both")
 
 special_frame = tk.Frame(root)
@@ -18,7 +18,7 @@ buttons_frame.pack(fill="both", expand=True)
 
 button_order = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0]
 
-button_font = ("Arial", 9)
+button_font = ("Arial", 12)
 
 def press(num: str):
     expression = expression_label.cget("text")
@@ -97,7 +97,7 @@ def clear():
 digit_buttons = []
 for i in range(0, 10):
     digit_order_index = button_order.index(i)
-    button = tk.Button(buttons_frame, text=str(i), command=lambda i=i: press(str(i)))
+    button = tk.Button(buttons_frame, text=str(i), font=button_font, command=lambda i=i: press(str(i)))
 
     if i == 0:
         digit_order_index += 1  # shift 0 over one
@@ -114,7 +114,7 @@ for i in range(4):
     symbol_index = i % len(math_symbols)
     button_name = display_symbols[symbol_index]
 
-    button = tk.Button(buttons_frame, text=button_name, command=lambda i=i: press(math_symbols[i]))
+    button = tk.Button(buttons_frame, text=button_name, font=button_font, command=lambda i=i: press(math_symbols[i]))
     button.grid(row=i, column=3, sticky="nsew")
     operation_buttons.append(button)
 
